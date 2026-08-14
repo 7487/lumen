@@ -33,6 +33,7 @@ from ..config import dump_yaml, load_yaml
 from ..filters import WidgetFilter
 from ..pipeline import Pipeline
 from ..transforms.sql import SQLLimit
+from ..util import as_pandas
 from ..views.base import Panel, Table, View
 from .analysis import Analysis
 from .config import FORMAT_ICONS, FORMAT_LABELS
@@ -309,7 +310,7 @@ class LumenEditor(Viewer):
         else:
             sql_limit = None
         if sql_limit:
-            data = pipeline.data
+            data = as_pandas(pipeline.data)
             limited = len(data) == sql_limit.limit
             if limited:
                 def unlimit(e):

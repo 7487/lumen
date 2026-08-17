@@ -261,7 +261,7 @@ class FileSourceControls(BaseSourceControls):
                 return json.dumps(json.loads(content), indent=2)
             except json.JSONDecodeError:
                 return content
-        from markitdown import MarkItDown
+        from markitdown import MarkItDown  # noqa: PLC0415
         if self._markitdown is None:
             self._markitdown = MarkItDown()
         return self._markitdown.convert_stream(file_obj, file_extension=extension).text_content

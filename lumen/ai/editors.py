@@ -125,7 +125,7 @@ class EditableProse(JSComponent):
     def _render_markdown(self):
         # Rendered with the same engine as Panel's Markdown pane, so the story
         # reads identically on screen and in the exports.
-        from markdown_it import MarkdownIt
+        from markdown_it import MarkdownIt  # noqa: PLC0415
 
         self._rendered = MarkdownIt("gfm-like").render(self.value)
 
@@ -481,7 +481,7 @@ class VegaLiteEditor(LumenEditor):
         if "spec" in spec:
             spec = spec["spec"]
         try:
-            import vl_convert as vlc
+            import vl_convert as vlc  # noqa: PLC0415
             vlc.vegalite_to_vega(spec)
         except ValueError as e:
             msg = str(e)

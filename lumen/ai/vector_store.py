@@ -583,7 +583,9 @@ class VectorStore(LLMUser):
         -------
         List of assigned IDs for the added items.
         """
-        from markitdown import FileConversionException, MarkItDown, StreamInfo
+        from markitdown import (  # noqa: PLC0415
+            FileConversionException, MarkItDown, StreamInfo,
+        )
 
         if metadata is None:
             metadata = {}
@@ -1727,7 +1729,7 @@ class ChromaDBVectorStore(VectorStore):
 
     def __init__(self, **params):
         super().__init__(**params)
-        import chromadb
+        import chromadb  # noqa: PLC0415
 
         if self.uri is None:
             self._client = chromadb.Client()
